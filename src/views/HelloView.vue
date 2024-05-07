@@ -96,7 +96,7 @@ export default defineComponent({
         { title: 'K3', value: '_k3', key: '_k3', align: 'center' },
         { title: 'Little Beer', value: '_littlebeer', key: '_littlebeer', align: 'center' },
         { title: 'All Classes', value: '_all', key: '_all', align: 'center' }
-      ],
+      ] as const,
       videoGridItems: [
         {
           _date: '',
