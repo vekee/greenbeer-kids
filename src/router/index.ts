@@ -23,10 +23,16 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   // 指定したパス以外の場合、ルートパスにリダイレクトする
-  if (to.fullPath !== '/' && to.fullPath !== '/hello') {
-    next('/')
-  } else {
+  if (to.fullPath == '/') {
     next()
+  } else if (to.fullPath == '/hello') {
+    if (sessionStorage.getItem('user') == null) {
+      next('/')
+    } else {
+      next()
+    }
+  } else {
+    next('/')
   }
 })
 

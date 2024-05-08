@@ -9,12 +9,7 @@
               <v-card-text>
                 <v-form ref="form" @submit.prevent="login">
                   <v-text-field v-model="username" label="ユーザー名" outlined></v-text-field>
-                  <v-text-field
-                    v-model="password"
-                    label="パスワード"
-                    type="password"
-                    outlined
-                  ></v-text-field>
+                  <v-text-field v-model="password" label="パスワード" type="password" outlined></v-text-field>
                   <v-btn type="submit" color="primary" block>ログイン</v-btn>
                 </v-form>
                 <div v-if="message" class="text-center mt-2">{{ message }}</div>
