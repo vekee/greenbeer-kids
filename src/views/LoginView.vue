@@ -26,6 +26,7 @@
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import users from './config/users.json'
+import { decryptString } from '@/utils/encryption.ts'
 
 interface User {
   _id: string
@@ -51,9 +52,8 @@ export default defineComponent({
     }
 
     const login = () => {
-      console.log(users)
       const user: User | undefined = users.find(
-        (user: User) => user._id === username.value && user._password === password.value
+        (user: User) => decryptString(user._id) === username.value && decryptString(user._password) === password.value
       )
 
       if (user) {
