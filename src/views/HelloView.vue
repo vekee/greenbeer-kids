@@ -6,7 +6,7 @@
           :headers="videoGridHeaders"
           :items="videoGridItems"
           :items-length="videoGridItems.length"
-          :items-per-page="2"
+          :items-per-page="4"
           :sticky="true"
           item-value="_date"
           :header-props="{ class: 'custom-header', align: 'center' }"
@@ -133,6 +133,9 @@ export default defineComponent({
 </script>
 
 <style>
+#app {
+  max-width: 100% !important;
+}
 .scrollable-table {
   overflow-y: auto;
   max-height: calc(100vh - 100px);
