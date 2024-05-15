@@ -8,8 +8,6 @@
           :items-length="videoGridItems.length"
           :items-per-page="4"
           :sticky="true"
-          item-value="_date"
-          :header-props="{ class: 'custom-header', align: 'center' }"
         >
           <template v-slot:body="{ items }">
             <tr v-for="(row, rowIndex) in items" :key="rowIndex">

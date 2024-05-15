@@ -42,11 +42,11 @@ export default defineComponent({
     const password = ref('')
     const message = ref<string | null>(null)
 
-    // ログイン情報をsessionStorageから取得する
-    const storedUserJSON = sessionStorage.getItem('user')
+    // ログイン情報をlocalStorageから取得する
+    const storedUserJSON = localStorage.getItem('user')
     const storedUser: User | null = storedUserJSON ? JSON.parse(storedUserJSON) : null
 
-    // sessionStorageに保存されたユーザーが有効であれば自動ログインする
+    // localStorageに保存されたユーザーが有効であれば自動ログインする
     if (storedUser) {
       router.push({ name: 'hello' })
     }
@@ -58,7 +58,7 @@ export default defineComponent({
 
       if (user) {
         message.value = 'ログインに成功しました。'
-        sessionStorage.setItem('user', JSON.stringify(user))
+        localStorage.setItem('user', JSON.stringify(user))
         router.push({ name: 'hello' })
       } else {
         message.value = 'ユーザー名またはパスワードが間違っています。'

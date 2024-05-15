@@ -14,6 +14,11 @@ const router = createRouter({
       component: LoginView
     },
     {
+      path: '/jimi',
+      name: 'jimi',
+      component: () => import('../views/JimiView.vue')
+    },
+    {
       path: '/hello',
       name: 'hello',
       component: () => import('../views/HelloView.vue')
@@ -26,7 +31,13 @@ router.beforeEach((to, from, next) => {
   if (to.fullPath == '/') {
     next()
   } else if (to.fullPath == '/hello') {
-    if (sessionStorage.getItem('user') == null) {
+    if (localStorage.getItem('user') == null) {
+      next('/')
+    } else {
+      next()
+    }
+  } else if (to.fullPath == '/jimi') {
+    if (localStorage.getItem('user') == null) {
       next('/')
     } else {
       next()
