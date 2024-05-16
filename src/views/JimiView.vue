@@ -1,29 +1,32 @@
 <template>
   <v-app>
     <v-main>
-      <v-container>
-        <v-data-table
-          :headers="videoGridHeaders"
-          :items="videoGridItems"
-          :items-length="videoGridItems.length"
-          :items-per-page="4"
-          :sticky="true"
-        >
-          <template v-slot:body="{ items }">
-            <tr v-for="(row, rowIndex) in items" :key="rowIndex">
-              <td style="min-width: 120px">
-                {{ convertDate(row._date) }}
-              </td>
-              <td style="min-width: 200px; white-space: pre-line">
-                {{ row._title }}
-              </td>
-              <td>
-                <VideoPlayer :videoUrl="row._jimi" />
-              </td>
-            </tr>
-          </template>
-        </v-data-table>
-      </v-container>
+      <VideoNavBar />
+      <v-sheet id="scrolling-techniques-3" class="overflow-y-auto" max-height="800px">
+        <v-container>
+          <v-data-table
+            :headers="videoGridHeaders"
+            :items="videoGridItems"
+            :items-length="videoGridItems.length"
+            :items-per-page="4"
+            :sticky="true"
+          >
+            <template v-slot:body="{ items }">
+              <tr v-for="(row, rowIndex) in items" :key="rowIndex">
+                <td style="min-width: 120px">
+                  {{ convertDate(row._date) }}
+                </td>
+                <td style="min-width: 200px; white-space: pre-line">
+                  {{ row._title }}
+                </td>
+                <td>
+                  <VideoPlayer :videoUrl="row._jimi" />
+                </td>
+              </tr>
+            </template>
+          </v-data-table>
+        </v-container>
+      </v-sheet>
     </v-main>
   </v-app>
 </template>
@@ -36,13 +39,14 @@ export default defineComponent({
   data() {
     return {
       videoGridHeaders: [
-        { title: '日付', value: '_date', key: '_date', align: 'center' },
-        { title: 'タイトル', value: '_title', key: '_title', align: 'center' },
+        { title: '日付', value: '_date', key: '_date', align: 'center', sortable: true },
+        { title: 'タイトル', value: '_title', key: '_title', align: 'center', sortable: false },
         {
           title: 'Hello Jimi',
           value: '_jimi',
           key: '_jimi',
-          align: 'center'
+          align: 'center',
+          sortable: false
         }
       ] as const,
       videoGridItems: [

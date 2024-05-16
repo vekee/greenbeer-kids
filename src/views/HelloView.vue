@@ -1,74 +1,77 @@
 <template>
   <v-app>
     <v-main>
-      <v-container class="scrollable-table">
-        <v-data-table
-          :headers="videoGridHeaders"
-          :items="videoGridItems"
-          :items-length="videoGridItems.length"
-          :items-per-page="4"
-          :sticky="true"
-        >
-          <template v-slot:body="{ items }">
-            <tr v-for="(row, rowIndex) in items" :key="rowIndex">
-              <td style="min-width: 120px">
-                {{ convertDate(row._date) }}
-              </td>
-              <td style="min-width: 200px; white-space: pre-line">
-                {{ row._title }}
-              </td>
-              <td>
-                <template v-if="row?._preschool">
-                  <VideoPlayer :videoUrl="row._preschool" />
-                </template>
-                <template v-else>
-                  <td>無</td>
-                </template>
-              </td>
-              <td>
-                <template v-if="row._k1">
-                  <VideoPlayer :videoUrl="row._k1" />
-                </template>
-                <template v-else>
-                  <td>無</td>
-                </template>
-              </td>
-              <td>
-                <template v-if="row._k2">
-                  <VideoPlayer :videoUrl="row._k2" />
-                </template>
-                <template v-else>
-                  <td>無</td>
-                </template>
-              </td>
-              <td>
-                <template v-if="row._k3">
-                  <VideoPlayer :videoUrl="row._k3" />
-                </template>
-                <template v-else>
-                  <td>無</td>
-                </template>
-              </td>
-              <td>
-                <template v-if="row?._littlebeer">
-                  <VideoPlayer :videoUrl="row._littlebeer" />
-                </template>
-                <template v-else>
-                  <td>無</td>
-                </template>
-              </td>
-              <td>
-                <template v-if="row?._all">
-                  <VideoPlayer :videoUrl="row._all" />
-                </template>
-                <template v-else>
-                  <td>無</td>
-                </template>
-              </td>
-            </tr>
-          </template>
-        </v-data-table>
-      </v-container>
+      <VideoNavBar />
+      <v-sheet id="scrolling-techniques-3" class="overflow-y-auto" max-height="800px">
+        <v-container>
+          <v-data-table
+            :headers="videoGridHeaders"
+            :items="videoGridItems"
+            :items-length="videoGridItems.length"
+            :items-per-page="4"
+            :sticky="true"
+          >
+            <template v-slot:body="{ items }">
+              <tr v-for="(row, rowIndex) in items" :key="rowIndex">
+                <td style="min-width: 120px">
+                  {{ convertDate(row._date) }}
+                </td>
+                <td style="min-width: 200px; white-space: pre-line">
+                  {{ row._title }}
+                </td>
+                <td>
+                  <template v-if="row?._preschool">
+                    <VideoPlayer :videoUrl="row._preschool" />
+                  </template>
+                  <template v-else>
+                    <td>無</td>
+                  </template>
+                </td>
+                <td>
+                  <template v-if="row._k1">
+                    <VideoPlayer :videoUrl="row._k1" />
+                  </template>
+                  <template v-else>
+                    <td>無</td>
+                  </template>
+                </td>
+                <td>
+                  <template v-if="row._k2">
+                    <VideoPlayer :videoUrl="row._k2" />
+                  </template>
+                  <template v-else>
+                    <td>無</td>
+                  </template>
+                </td>
+                <td>
+                  <template v-if="row._k3">
+                    <VideoPlayer :videoUrl="row._k3" />
+                  </template>
+                  <template v-else>
+                    <td>無</td>
+                  </template>
+                </td>
+                <td>
+                  <template v-if="row?._littlebeer">
+                    <VideoPlayer :videoUrl="row._littlebeer" />
+                  </template>
+                  <template v-else>
+                    <td>無</td>
+                  </template>
+                </td>
+                <td>
+                  <template v-if="row?._all">
+                    <VideoPlayer :videoUrl="row._all" />
+                  </template>
+                  <template v-else>
+                    <td>無</td>
+                  </template>
+                </td>
+              </tr>
+            </template>
+          </v-data-table>
+        </v-container>
+      </v-sheet>
     </v-main>
   </v-app>
 </template>
@@ -134,16 +137,11 @@ export default defineComponent({
 #app {
   max-width: 100% !important;
 }
-.scrollable-table {
-  overflow-y: auto;
-  max-height: calc(100vh - 100px);
-}
 
 .v-table v-table__wrapper table {
   border-spacing: 2 !important;
 }
 
-/* header stricky start */
 .v-table__wrapper {
   overflow: visible !important;
 }
@@ -151,5 +149,4 @@ export default defineComponent({
 .v-container {
   padding: 0 !important;
 }
-/* header stricky end */
 </style>
