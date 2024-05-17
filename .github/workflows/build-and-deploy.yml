@@ -2,7 +2,7 @@
 name: Deploy static content to Pages
 
 on:
-  # デフォルトブランチを対象としたプッシュ時にで実行されます
+  # デフォルトブランチを対象としたプッシュ時に実行されます
   push:
     branches: ['main']
 
@@ -54,11 +54,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # dist リポジトリのアップロード
+          # dist ディレクトリをアップロード
           path: './dist'
-
-      - name: Deploy
-        run: npm run deploy
 
       - name: Deploy to GitHub Pages
         id: deployment
