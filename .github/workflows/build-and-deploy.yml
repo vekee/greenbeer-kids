@@ -31,7 +31,7 @@ jobs:
       - name: Set up Git
         run: |
           git config --global user.email "vekee@gmail.com"
-          git config --global user.name "dahai.duan"
+          git config --global user.name "vekee"
 
       - name: Checkout
         uses: actions/checkout@v4
