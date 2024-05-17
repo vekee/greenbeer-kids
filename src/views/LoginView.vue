@@ -26,7 +26,7 @@
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import users from './config/users.json'
-import { decryptString } from '@/utils/encryption'
+import { decryptString } from '../utils/encryption'
 
 interface User {
   _id: string
