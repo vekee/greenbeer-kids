@@ -13,8 +13,8 @@ import { fileURLToPath, URL } from 'node:url'
 export default defineConfig(({ mode }) => {
   const isProd = mode === 'production'
   return {
-    base: isProd ? '/greenbeer-kids/' : './',
-    // base: isProd ? '/' : './',
+    // base: isProd ? '/greenbeer-kids/' : './',
+    base: isProd ? '/' : './',
     plugins: [
       vue({
         template: { transformAssetUrls }
@@ -35,9 +35,11 @@ export default defineConfig(({ mode }) => {
     ],
     define: { 'process.env': {} },
     resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url))
-      },
+      alias: [
+        { find: '/@', replacement: fileURLToPath(new URL('./src', import.meta.url)) },
+        { find: '/IMG', replacement: fileURLToPath(new URL('./src/assets/images/', import.meta.url)) },
+        { find: '/FONT', replacement: fileURLToPath(new URL('./src/assets/fonts/', import.meta.url)) }
+      ],
       extensions: ['.js', '.json', '.jsx', '.mjs', '.ts', '.tsx', '.vue']
     },
     server: {
