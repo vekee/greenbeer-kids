@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => {
   const isProd = mode === 'production'
   return {
     // base: isProd ? '/greenbeer-kids/' : './', // for github actions
-    base: './',
+    base: isProd ? '/' : './',
     plugins: [
       vue({
         template: { transformAssetUrls }
