@@ -22,29 +22,33 @@ const router = createRouter({
       path: '/hello',
       name: 'hello',
       component: () => import('../views/HelloView.vue')
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      redirect: '/'
     }
   ]
 })
 
-router.beforeEach((to, from, next) => {
-  // 指定したパス以外の場合、ルートパスにリダイレクトする
-  if (to.fullPath == '/') {
-    next()
-  } else if (to.fullPath == '/hello') {
-    if (localStorage.getItem('user') == null) {
-      next('/')
-    } else {
-      next()
-    }
-  } else if (to.fullPath == '/jimi') {
-    if (localStorage.getItem('user') == null) {
-      next('/')
-    } else {
-      next()
-    }
-  } else {
-    next('/')
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   // 指定したパス以外の場合、ルートパスにリダイレクトする
+//   if (to.fullPath == '/') {
+//     next()
+//   } else if (to.fullPath == '/hello') {
+//     if (localStorage.getItem('user') == null) {
+//       next('/')
+//     } else {
+//       next()
+//     }
+//   } else if (to.fullPath == '/jimi') {
+//     if (localStorage.getItem('user') == null) {
+//       next('/')
+//     } else {
+//       next()
+//     }
+//   } else {
+//     next('/')
+//   }
+// })
 
 export default router
