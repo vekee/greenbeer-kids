@@ -4,13 +4,7 @@
       <VideoNavBar />
       <v-sheet id="scrolling-techniques-3" class="overflow-y-auto" max-height="800px">
         <v-container>
-          <v-data-table
-            :headers="videoGridHeaders"
-            :items="videoGridItems"
-            :items-length="videoGridItems.length"
-            :items-per-page="4"
-            :sticky="true"
-          >
+          <v-data-table :headers="videoGridHeaders" :items="videoGridItems" item-key="_date" items-per-page="2">
             <template v-slot:body="{ items }">
               <tr v-for="(row, rowIndex) in items" :key="rowIndex">
                 <td style="min-width: 120px">
@@ -84,19 +78,20 @@ export default defineComponent({
   data() {
     return {
       videoGridHeaders: [
-        { title: '日付', value: '_date', key: '_date', align: 'center' },
-        { title: 'タイトル', value: '_title', key: '_title', align: 'center' },
+        { title: '日付', value: '_date', key: '_date', align: 'center', sortable: true },
+        { title: 'タイトル', value: '_title', key: '_title', align: 'center', sortable: false },
         {
           title: 'Preschool',
           value: '_preschool',
           key: '_preschool',
-          align: 'center'
+          align: 'center',
+          sortable: false
         },
-        { title: 'K1', value: '_k1', key: '_k1', align: 'center' },
-        { title: 'K2', value: '_k2', key: '_k2', align: 'center' },
-        { title: 'K3', value: '_k3', key: '_k3', align: 'center' },
-        { title: 'Little Beer', value: '_littlebeer', key: '_littlebeer', align: 'center' },
-        { title: 'All Classes', value: '_all', key: '_all', align: 'center' }
+        { title: 'K1', value: '_k1', key: '_k1', align: 'center', sortable: false },
+        { title: 'K2', value: '_k2', key: '_k2', align: 'center', sortable: false },
+        { title: 'K3', value: '_k3', key: '_k3', align: 'center', sortable: false },
+        { title: 'Little Beer', value: '_littlebeer', key: '_littlebeer', align: 'center', sortable: false },
+        { title: 'All Classes', value: '_all', key: '_all', align: 'center', sortable: false }
       ] as const,
       videoGridItems: [
         {
