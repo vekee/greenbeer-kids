@@ -26,7 +26,7 @@
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import users from './config/users.json'
-import { decryptString } from '../utils/encryption'
+import { decryptString, encryptString } from '../utils/encryption'
 
 interface User {
   _id: string
@@ -41,6 +41,8 @@ export default defineComponent({
     const username = ref('')
     const password = ref('')
     const message = ref<string | null>(null)
+
+    console.log('test:', encryptString('test'))
 
     // ログイン情報をlocalStorageから取得する
     const storedUserJSON = localStorage.getItem('user')
