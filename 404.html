@@ -1,17 +1,18 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0; URL='/index.html'" />
-    <script>
-      // JavaScriptによるリダイレクト
-      setTimeout(function () {
-        var path = window.location.pathname
-        window.location.replace('/index.html' + path)
-      }, 0)
-    </script>
+    <meta http-equiv="refresh" content="0; url=/" />
   </head>
   <body>
-    <!-- 何も表示しない -->
+    <script type="text/javascript">
+      // Replace the path to your app's entry point
+      var redirectTo = '/#/'
+      // Preserve path after hash
+      var path = window.location.pathname
+      if (path && path !== '/') {
+        redirectTo += path.substr(1)
+      }
+      window.location.href = redirectTo
+    </script>
   </body>
 </html>
