@@ -2,7 +2,7 @@
   <v-app>
     <v-main>
       <VideoNavBar />
-      <v-sheet id="scrolling-techniques-3" class="overflow-y-auto" max-height="800px">
+      <v-sheet id="scrolling-techniques-3" class="overflow-y-auto" max-height="900px">
         <v-container>
           <v-data-table :headers="videoGridHeaders" :items="videoGridItems" item-key="_date" items-per-page="2">
             <template v-slot:body="{ items }">
