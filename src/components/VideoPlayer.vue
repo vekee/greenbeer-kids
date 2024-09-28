@@ -3,7 +3,7 @@
     ref="videoPlayer"
     class="video-js vjs-default-skin vjs-big-play-centered"
     controls
-    preload="auto"
+    preload="none"
     width="286px"
     height="216px"
   >
