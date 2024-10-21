@@ -13,8 +13,8 @@ import { fileURLToPath, URL } from 'node:url'
 export default defineConfig(({ mode }) => {
   const isProd = mode === 'production'
   return {
-    // base: isProd ? '/greenbeer-kids/' : './',
-    base: isProd ? '/' : './',
+    base: isProd ? '/greenbeer-kids/' : './',
+    // base: isProd ? '/' : './',
     plugins: [
       vue({
         template: { transformAssetUrls }
