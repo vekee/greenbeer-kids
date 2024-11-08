@@ -4,7 +4,7 @@
       <VideoNavBar />
       <v-sheet id="scrolling-techniques-3" class="overflow-y-auto" max-height="900px">
         <v-container>
-          <v-data-table :headers="videoGridHeaders" :items="videoGridItems" item-key="_date" items-per-page="2">
+          <v-data-table :headers="videoGridHeaders" :items="videoGridItems" item-key="_date" items-per-page="4">
             <template v-slot:body="{ items }">
               <tr v-for="(row, rowIndex) in items" :key="rowIndex">
                 <td style="min-width: 120px">
